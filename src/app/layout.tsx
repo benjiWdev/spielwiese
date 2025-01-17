@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
+import NavBar from "@/components/navigation/navbar";
 
 export const metadata: Metadata = {
   title: "Cooklet",
@@ -12,9 +13,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="de">
       <body>
-        {children}
+        <NavBar />
+        <main className="container mx-auto px-xs">{children}</main>
       </body>
     </html>
   );
