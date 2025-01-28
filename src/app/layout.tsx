@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="de">
       <body>
         <NavBar />
-        <main className="container mx-auto px-xs">{children}</main>
+        <main className="container mx-auto mt-lg px-xs">{children}</main>
       </body>
     </html>
   );

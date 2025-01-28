@@ -4,9 +4,13 @@
 
 :root {
   --primary: #023c52;
+  --primary-hover: #022c3c;
   --on-primary: #f3f4f6;
+  --on-primary-hover: #c5cad3;
   --secondary: #ebf9fe;
+  --secondary-hover: #ebf9fe;
   --on-secondary: #1b1e25;
+  --on-secondary-hover: #1b1e25;
   --tile: #ebf9fe;
   --background: #f3f4f6;
   --foreground: #1b1e25;
@@ -18,9 +22,13 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --primary: #023c52;
-    --on-primary: #ffffff;
+    --primary-hover: #022c3c;
+    --on-primary: #f3f4f6;
+    --on-primary-hover: #c5cad3;
     --secondary: #ebf9fe;
+    --secondary-hover: #b1e7fb;
     --on-secondary: #1b1e25;
+    --on-secondary-hover: #2b303b;
     --tile: #011d28;
     --background: #010f14;
     --foreground: #f3f4f6;

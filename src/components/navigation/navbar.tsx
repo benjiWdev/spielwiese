@@ -18,7 +18,7 @@ export default function NavBar() {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-primary text-onPrimary py-sm">
+    <nav className="bg-primary text-onPrimary py-xs">
       <div className="container mx-auto">
         <div className="flex">
           {navigationElements.map((elem) => (
@@ -26,7 +26,7 @@ export default function NavBar() {
               key={`nav-${elem.name}`}
               href={elem.link}
               className={
-                (elem.link === pathname ? "underline " : "") + "p-xs mr-lg"
+                (elem.link === pathname ? "underline " : "") + "p-sm mr-lg text-xl"
               }
             >
               {elem.name}

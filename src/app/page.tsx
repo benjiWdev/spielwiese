@@ -5,7 +5,7 @@ export default async function Dashboard() {
   return (
     <div>
       <Link href={"recipes"}>
-        <Button />
+        <Button>Rezepte</Button>
       </Link>
     </div>
   );

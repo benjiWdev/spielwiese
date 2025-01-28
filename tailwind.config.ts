@@ -8,6 +8,7 @@ export default {
   ],
   theme: {
     spacing: {
+      xxs: "4px",
       xs: "8px",
       sm: "12px",
       md: "24px",
@@ -17,9 +18,13 @@ export default {
     extend: {
       colors: {
         primary: "var(--primary)",
+        primaryHover: "var(--primary-hover)",
         onPrimary: "var(--on-primary)",
+        onPrimaryHover: "var(--on-primary-hover)",
         secondary: "var(--secondary)",
+        secondaryHover: "var(--secondary-hover)",
         onSecondary: "var(--on-secondary)",
+        onSecondaryHover: "var(--on-secondary-hover)",
         tile: "var(--tile)",
         background: "var(--background)",
         foreground: "var(--foreground)",
