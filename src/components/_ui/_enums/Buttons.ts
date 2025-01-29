@@ -3,7 +3,3 @@ export enum ButtonSizes {
   DEFAULT = "B-DEFAULT",
   LARGE = "B-LARGE",
 }
-export enum ButtonColors {
-  PRIMARY = "B-PRIMARY",
-  SECONDARY = "B-SECONDARY",
-}

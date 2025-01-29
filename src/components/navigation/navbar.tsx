@@ -1,5 +1,6 @@
 "use client";
 
+import { Routes } from "@/models/enums/Routes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -7,11 +8,11 @@ export default function NavBar() {
   const navigationElements = [
     {
       name: "Dashboard",
-      link: "/",
+      link: Routes.DASHBOARD,
     },
     {
       name: "Rezepte",
-      link: "/recipes",
+      link: Routes.RECIPES_OVERVIEW,
     },
   ];
 
