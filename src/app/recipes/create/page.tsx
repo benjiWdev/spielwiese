@@ -1,13 +1,14 @@
 "use client";
 
 import Button from "@/components/_ui/button";
+import Textfield from "@/components/_ui/textfield";
 import { createRecipe } from "@/lib/db";
 import { useState } from "react";
 
 interface Inputs {
   name: string;
   ingredient: string;
-  instructions?: string;
+  instructions: string;
 }
 
 export default function CreateRecipe() {
@@ -17,7 +18,7 @@ export default function CreateRecipe() {
     instructions: "",
   });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setInputs((values) => ({
       ...values,
       [event.target.name]: event.target.value,
@@ -34,22 +35,26 @@ export default function CreateRecipe() {
 
   return (
     <div>
-      <h1 className="text-4xl">Neues Rezept</h1>
+      <h1 className="text-4xl mb-md">Neues Rezept</h1>
       <form action={onSubmit}>
-        <input
+        <Textfield
+          label="Name"
           name="name"
           required
           value={inputs.name}
           onChange={handleChange}
         />
-        <input
+        <Textfield
+          label="Zutaten"
           name="ingredient"
           required
           value={inputs.ingredient}
           onChange={handleChange}
         />
-        <input
+        <Textfield
+          label="Zubereitung"
           name="instructions"
+          required
           value={inputs.instructions}
           onChange={handleChange}
         />

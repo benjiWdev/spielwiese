@@ -27,7 +27,8 @@ export default function NavBar() {
               key={`nav-${elem.name}`}
               href={elem.link}
               className={
-                (elem.link === pathname ? "underline " : "") + "p-sm mr-lg text-xl"
+                (elem.link === pathname ? "underline " : "") +
+                "p-sm mr-lg text-xl"
               }
             >
               {elem.name}
