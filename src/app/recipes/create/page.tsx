@@ -5,32 +5,33 @@ import Textfield from "@/components/_ui/textfield";
 import { createRecipe } from "@/lib/db";
 import { useState } from "react";
 
-interface Inputs {
-  name: string;
-  ingredient: string;
-  instructions: string;
-}
-
 export default function CreateRecipe() {
-  const [inputs, setInputs] = useState<Inputs>({
-    name: "",
-    ingredient: "",
-    instructions: "",
-  });
+  const [name, setName] = useState("");
+  const [ingredients, setIngredients] = useState<string[]>([]);
+  const [instructions, setInstructions] = useState("");
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setInputs((values) => ({
-      ...values,
-      [event.target.name]: event.target.value,
-    }));
+  const addIngredient = () => {
+    setIngredients([...ingredients, ""]);
   };
+
+  const removeIngredient = (index: number) => {
+    setIngredients(ingredients.toSpliced(index, 1));
+  };
+
+  function handleIngredientChange(value: string, index: number) {
+    setIngredients(
+      ingredients.map((ingredient, i) => {
+        return index === i ? value : ingredient;
+      })
+    );
+  }
+
   async function onSubmit() {
-    const request = {
-      name: inputs.name,
-      ingredients: [inputs.ingredient],
-      instructions: inputs.instructions,
-    };
-    await createRecipe(request);
+    await createRecipe({
+      name,
+      ingredients,
+      instructions,
+    });
   }
 
   return (
@@ -38,25 +39,41 @@ export default function CreateRecipe() {
       <h1 className="text-4xl mb-md">Neues Rezept</h1>
       <form action={onSubmit}>
         <Textfield
+          className="mb-md"
           label="Name"
           name="name"
           required
-          value={inputs.name}
-          onChange={handleChange}
+          value={name}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            setName(event.target.value)
+          }
         />
+        {ingredients.map((ingredient, i) => (
+          <div key={`ingredient-${i}`} className="flex items-center mb-sm">
+            <Textfield
+              label={`Zutat ${i + 1}`}
+              name={`ingredient-${i}`}
+              value={ingredients[i]}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleIngredientChange(event.target.value, i)
+              }
+            />
+            <Button className="ml-sm" onClick={() => removeIngredient(i)}>
+              X
+            </Button>
+          </div>
+        ))}
+        <Button type="button" onClick={addIngredient} className="mb-md">
+          Zutat hinzufügen
+        </Button>
         <Textfield
-          label="Zutaten"
-          name="ingredient"
-          required
-          value={inputs.ingredient}
-          onChange={handleChange}
-        />
-        <Textfield
+          className="mb-md"
           label="Zubereitung"
           name="instructions"
-          required
-          value={inputs.instructions}
-          onChange={handleChange}
+          value={instructions}
+          onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+            setInstructions(event.target.value)
+          }
         />
         <Button type="submit">Erstellen</Button>
       </form>

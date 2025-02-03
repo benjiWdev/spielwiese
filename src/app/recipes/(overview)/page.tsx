@@ -15,7 +15,7 @@ export default async function RecipesOverview() {
           <Button size={ButtonSizes.LARGE}>Neues Rezept</Button>
         </Link>
       </div>
-      <div className="grid content-stretch mt-md -mx-sm md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid content-stretch my-md -mx-sm md:grid-cols-2 xl:grid-cols-3">
         {recipes.map((recipe) => (
           <Card
             key={recipe.id}

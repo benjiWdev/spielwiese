@@ -1,4 +1,5 @@
 import { Props } from "@/models/Props";
+import { convertClassesToString } from "../_helpers/classes";
 
 interface TextfieldProps extends Props {
   label: string;
@@ -9,8 +10,12 @@ interface TextfieldProps extends Props {
 }
 
 export default function Textfield(props: TextfieldProps) {
+  const classes = [
+    "w-[30rem] bg-tile h-[4.25rem] px-sm pt-xs rounded-br-lg",
+    props.className,
+  ];
   return (
-    <div className="w-[30rem] bg-tile h-[4.25rem] mb-md px-sm pt-xs rounded-br-lg">
+    <div className={convertClassesToString(classes)}>
       <input
         type="text"
         name={props.name}
@@ -19,7 +24,9 @@ export default function Textfield(props: TextfieldProps) {
         onChange={props.onChange}
         className="bg-transparent w-full border-b h-[2rem]"
       />
-      <label htmlFor={props.name} className="text-xs ml-xs">{props.label}</label>
+      <label htmlFor={props.name} className="text-xs ml-xs">
+        {props.label}
+      </label>
     </div>
   );
 }

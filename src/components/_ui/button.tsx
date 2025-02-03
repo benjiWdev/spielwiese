@@ -7,13 +7,14 @@ interface CardProps extends Props {
   color?: PlattformColors.PRIMARY | PlattformColors.SECONDARY;
   size?: ButtonSizes;
   type?: "button" | "submit" | "reset";
+  onClick?: () => void;
 }
 
 export default function Button(props: CardProps) {
   const buttonSizes = {
-    [ButtonSizes.SMALL]: "py-xxs px-sm text-xs rounded-br-md",
-    [ButtonSizes.DEFAULT]: "py-xs px-md rounded-br-lg",
-    [ButtonSizes.LARGE]: "py-sm px-lg text-xl rounded-br-2xl",
+    [ButtonSizes.SMALL]: "h-[24px] py-xxs px-sm text-xs rounded-br-md",
+    [ButtonSizes.DEFAULT]: "h-[40px] py-xs px-md rounded-br-lg",
+    [ButtonSizes.LARGE]: "h-[52px] py-sm px-lg text-xl rounded-br-2xl",
   };
   const buttonColors = {
     [PlattformColors.PRIMARY]:
@@ -26,12 +27,15 @@ export default function Button(props: CardProps) {
       ? buttonColors[props.color]
       : buttonColors[PlattformColors.PRIMARY],
     props.size ? buttonSizes[props.size] : buttonSizes[ButtonSizes.DEFAULT],
-    props.type || "button",
     props.className,
     "transition-colors",
   ];
   return (
-    <button className={convertClassesToString(classes)}>
+    <button
+      type={props.type || "button"}
+      className={convertClassesToString(classes)}
+      onClick={props.onClick}
+    >
       {props.children}
     </button>
   );
