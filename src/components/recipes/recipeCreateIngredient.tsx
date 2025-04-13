@@ -8,7 +8,6 @@ import {
   Typography,
   FormControl,
   InputLabel,
-  Input,
   OutlinedInput,
 } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'

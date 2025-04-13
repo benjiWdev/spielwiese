@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import '@/styles/globals.css'
 import NavBar from '@/components/navigation/navbar'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
-import { Container, Grid } from '@mui/material'
+import { Container } from '@mui/material'
 
 export const metadata: Metadata = {
   title: 'Cooklet',
