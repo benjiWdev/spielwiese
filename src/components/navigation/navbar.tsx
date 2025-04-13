@@ -1,41 +1,44 @@
-"use client";
+'use client'
 
-import { Routes } from "@/models/enums/Routes";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Routes } from '@/models/enums/Routes'
+import { AppBar, Button, Toolbar, Typography } from '@mui/material'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function NavBar() {
   const navigationElements = [
     {
-      name: "Dashboard",
+      name: 'Dashboard',
       link: Routes.DASHBOARD,
     },
     {
-      name: "Rezepte",
+      name: 'Rezepte',
       link: Routes.RECIPES_OVERVIEW,
     },
-  ];
+    {
+      name: 'Zutaten',
+      link: Routes.INGREDIENTS,
+    },
+  ]
 
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   return (
-    <nav className="bg-primary text-onPrimary py-xs">
-      <div className="container mx-auto">
-        <div className="flex">
+    <AppBar position="static" color="transparent" elevation={0}>
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <Typography component="h1" variant="h3" color="primary">
+          Cooklet
+        </Typography>
+        <div>
           {navigationElements.map((elem) => (
-            <Link
-              key={`nav-${elem.name}`}
-              href={elem.link}
-              className={
-                (elem.link === pathname ? "underline " : "") +
-                "p-sm mr-lg text-xl"
-              }
-            >
-              {elem.name}
+            <Link key={`nav-${elem.name}`} href={elem.link}>
+              <Button variant={elem.link === pathname ? 'outlined' : 'text'} sx={{ mx: 1, px: 3 }}>
+                {elem.name}
+              </Button>
             </Link>
           ))}
         </div>
-      </div>
-    </nav>
-  );
+      </Toolbar>
+    </AppBar>
+  )
 }

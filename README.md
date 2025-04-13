@@ -13,7 +13,7 @@ pnpm install
 First, run the development server:
 
 ```bash
-pnpm run dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -26,7 +26,7 @@ Routes are stored in app directory and components are stored in components direc
 
 ### Styles
 
-Project mainly uses tailwind with minimal custom css in globals.css.
+Project uses MUI Library
 
 ### Types and Enums
 

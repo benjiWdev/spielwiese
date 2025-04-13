@@ -1,7 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+/* 
 :root {
   --primary: #023c52;
   --primary-hover: #022c3c;
@@ -49,4 +46,4 @@ input,
 textarea:focus,
 input:focus {
   outline: none;
-}
+} */
