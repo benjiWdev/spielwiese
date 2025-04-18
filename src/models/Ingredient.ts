@@ -15,3 +15,11 @@ export type Amount = {
   count: number
   measurement?: Measurements
 }
+
+export type RecipeIngredientResponse = {
+  recipe_id: string
+  name: string
+  id: string
+  amount: number
+  measurement: Measurements
+}

@@ -1,15 +1,16 @@
-'use client'
-
+import IngredientCreateForm from '@/components/ingredients/ingredientCreateForm'
 import { createIngredient } from '@/lib/db'
-import { Box, Button, TextField, Typography } from '@mui/material'
-import { Fragment, useState } from 'react'
+import { Typography } from '@mui/material'
+import { Fragment } from 'react'
 
 export default function CreateRecipe() {
-  const [name, setName] = useState('')
-
-  async function onSubmit() {
-    await createIngredient(name)
-    setName('')
+  async function submit(name: string): Promise<void> {
+    'use server'
+    try {
+      await createIngredient(name)
+    } catch (e) {
+      Promise.reject(e)
+    }
   }
 
   return (
@@ -17,14 +18,7 @@ export default function CreateRecipe() {
       <Typography variant="h2" sx={{ mb: 4 }}>
         Neue Zutat hinzufügen
       </Typography>
-      <form action={onSubmit}>
-        <Box sx={{ width: '50%', mb: 2 }}>
-          <TextField label="Name" required fullWidth value={name} onChange={(event) => setName(event.target.value)} />
-        </Box>
-        <Button variant="contained" type="submit">
-          Erstellen
-        </Button>
-      </form>
+      <IngredientCreateForm submit={submit} />
     </Fragment>
   )
 }

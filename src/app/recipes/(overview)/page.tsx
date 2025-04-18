@@ -1,12 +1,18 @@
 import Card from '@/components/_ui/card'
 import { getRecipes } from '@/lib/db'
 import { Routes } from '@/models/enums/Routes'
+import { Recipe } from '@/models/Recipe'
 import { Button, Grid, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
 import Link from 'next/link'
 import { Fragment } from 'react'
 
 export default async function RecipesOverview() {
-  const recipes = await getRecipes()
+  let recipes: Recipe[] = []
+  try {
+    recipes = await getRecipes()
+  } catch (e) {
+    Promise.reject(e)
+  }
   return (
     <Fragment>
       <Stack direction="row" justifyContent="space-between" alignItems="center">

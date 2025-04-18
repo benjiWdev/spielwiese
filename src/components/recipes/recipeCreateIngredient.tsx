@@ -1,15 +1,6 @@
 import { Measurements } from '@/models/enums/Measurements'
 import { IngredientWithAmount } from '@/models/Ingredient'
-import {
-  Select,
-  MenuItem,
-  IconButton,
-  Stack,
-  Typography,
-  FormControl,
-  InputLabel,
-  OutlinedInput,
-} from '@mui/material'
+import { Select, MenuItem, IconButton, Stack, Typography, FormControl, InputLabel, OutlinedInput } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
 
 interface RecipeCreateIngredientProps {
@@ -42,7 +33,7 @@ export default function RecipeCreateIngredient({
           sx={{ width: 100 }}
           inputProps={{ min: 0 }}
           onChange={(event) => changeIngredientAmount(event.target.value, index)}
-        ></OutlinedInput>
+        />
       </FormControl>
       <FormControl sx={{ minWidth: 100 }}>
         <InputLabel size="small">Art</InputLabel>

@@ -28,7 +28,6 @@ export default function RecipeCreateForm({ ingredientsProps, submit }: RecipeCre
   }
 
   const changeIngredientAmount = (value: string, index: number) => {
-    console.log(value)
     setSelectedIngredients(
       selectedIngredients.map((selectedIngredient, i) =>
         index === i
@@ -68,9 +67,11 @@ export default function RecipeCreateForm({ ingredientsProps, submit }: RecipeCre
     try {
       setLoading(true)
       await submit(name, selectedIngredients, instructions)
+      setName('')
+      setSelectedIngredients([])
+      setInstructions('')
     } catch (e) {
-      console.error(e)
-      Promise.resolve()
+      Promise.reject(e)
     } finally {
       setLoading(false)
     }

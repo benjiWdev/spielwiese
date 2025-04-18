@@ -12,3 +12,9 @@ export type RecipeRequest = {
   ingredients: IngredientWithAmount[]
   instructions?: string
 }
+
+export type RecipeResponse = {
+  id: string
+  name: string
+  instructions?: string
+}

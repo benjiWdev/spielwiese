@@ -1,11 +1,17 @@
 import { getIngredients } from '@/lib/db'
 import { Routes } from '@/models/enums/Routes'
+import { Ingredient } from '@/models/Ingredient'
 import { Button, Stack, Typography } from '@mui/material'
-import Link from 'next/link'
 import { Fragment } from 'react'
+import Link from 'next/link'
 
 export default async function Ingredients() {
-  const ingredients = await getIngredients()
+  let ingredients: Ingredient[] = []
+  try {
+    ingredients = await getIngredients()
+  } catch (e) {
+    Promise.reject(e)
+  }
   return (
     <Fragment>
       <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 4 }}>
