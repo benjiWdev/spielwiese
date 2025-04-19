@@ -1,4 +1,4 @@
-import { Measurements } from './enums/Measurements'
+import { Measurements } from '../enums/Measurements'
 
 export type Ingredient = {
   id: string

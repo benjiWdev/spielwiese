@@ -1,8 +1,7 @@
-import Card from '@/components/_ui/card'
 import { getRecipes } from '@/lib/db'
-import { Routes } from '@/models/enums/Routes'
-import { Recipe } from '@/models/Recipe'
-import { Button, Grid, List, ListItem, ListItemText, Stack, Typography } from '@mui/material'
+import { Recipe, Routes } from '@/models'
+import { getAmountMeasurementString } from '@/utils'
+import { Button, Card, CardContent, Grid, Stack, Typography } from '@mui/material'
 import Link from 'next/link'
 import { Fragment } from 'react'
 
@@ -15,7 +14,7 @@ export default async function RecipesOverview() {
   }
   return (
     <Fragment>
-      <Stack direction="row" justifyContent="space-between" alignItems="center">
+      <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 2 }}>
         <Typography variant="h2">Rezepte</Typography>
         <Link href={Routes.RECIPES_CREATE}>
           <Button variant="contained">Neues Rezept</Button>
@@ -24,15 +23,29 @@ export default async function RecipesOverview() {
       <Grid container>
         {recipes.map((recipe) => (
           <Grid size={4} key={recipe.id}>
-            <Card title={recipe.name}>
-              <List>
-                {recipe.ingredients.map((ingredient, i) => (
-                  <ListItem key={`${recipe.id}-ing-${i}`}>
-                    <ListItemText primary={ingredient.name}></ListItemText>
-                  </ListItem>
-                ))}
-              </List>
-              {recipe.instructions ? <Typography variant="body1">{recipe.instructions}</Typography> : undefined}
+            <Card>
+              <CardContent>
+                <Typography component="h3" variant="h5">
+                  {recipe.name}
+                </Typography>
+                <Grid container sx={{ mt: 2 }}>
+                  {recipe.ingredients.map((ingredient, i) => (
+                    <Fragment key={`${recipe.id}-ing-${i}`}>
+                      <Grid size={3}>
+                        <Typography variant="body1">{getAmountMeasurementString(ingredient.amount)}</Typography>
+                      </Grid>
+                      <Grid size={9}>
+                        <Typography variant="body1">{ingredient.name}</Typography>
+                      </Grid>
+                    </Fragment>
+                  ))}
+                </Grid>
+                {recipe.instructions ? (
+                  <Typography variant="body1" sx={{ mt: 2 }}>
+                    {recipe.instructions}
+                  </Typography>
+                ) : undefined}
+              </CardContent>
             </Card>
           </Grid>
         ))}

@@ -1,11 +1,16 @@
 import RecipeCreateForm from '@/components/recipes/recipeCreateForm'
 import { createRecipe, getIngredients } from '@/lib/db'
-import { IngredientWithAmount } from '@/models/Ingredient'
+import { Ingredient, IngredientWithAmount } from '@/models'
 import { Typography } from '@mui/material'
 import { Fragment } from 'react'
 
 export default async function CreateRecipe() {
-  const ingredients = await getIngredients()
+  let ingredients: Ingredient[] = []
+  try {
+    ingredients = await getIngredients()
+  } catch (e) {
+    Promise.reject(e)
+  }
 
   async function submitRecipe(name: string, ingredients: IngredientWithAmount[], instructions: string) {
     'use server'

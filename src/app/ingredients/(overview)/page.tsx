@@ -1,6 +1,5 @@
 import { getIngredients } from '@/lib/db'
-import { Routes } from '@/models/enums/Routes'
-import { Ingredient } from '@/models/Ingredient'
+import { Ingredient, Routes } from '@/models'
 import { Button, Stack, Typography } from '@mui/material'
 import { Fragment } from 'react'
 import Link from 'next/link'

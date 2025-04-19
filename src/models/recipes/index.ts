@@ -1,4 +1,4 @@
-import { IngredientWithAmount } from './Ingredient'
+import { IngredientWithAmount } from '..'
 
 export type Recipe = {
   id: string

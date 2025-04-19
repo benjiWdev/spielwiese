@@ -1,7 +1,6 @@
 'use server'
 
-import { Ingredient, RecipeIngredientResponse } from '@/models/Ingredient'
-import { Recipe, RecipeRequest, RecipeResponse } from '@/models/Recipe'
+import { Recipe, RecipeRequest, RecipeResponse, Ingredient, RecipeIngredientResponse } from '@/models'
 import { Client, neon } from '@neondatabase/serverless'
 
 const sql = neon(process.env.DATABASE_URL!)
