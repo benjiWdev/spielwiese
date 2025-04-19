@@ -17,7 +17,9 @@ export default async function RecipesOverview() {
       <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 2 }}>
         <Typography variant="h2">Rezepte</Typography>
         <Link href={Routes.RECIPES_CREATE}>
-          <Button variant="contained">Neues Rezept</Button>
+          <Button variant="contained" size="large">
+            Neues Rezept
+          </Button>
         </Link>
       </Stack>
       <Grid container>

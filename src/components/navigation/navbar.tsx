@@ -1,6 +1,6 @@
 'use client'
 
-import { Routes } from '@/models/enums/Routes'
+import { Routes } from '@/models'
 import { AppBar, Button, Toolbar, Typography } from '@mui/material'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'

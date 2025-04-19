@@ -1,8 +1,7 @@
 'use client'
 
-import { Measurements } from '@/models/enums/Measurements'
-import { Ingredient, IngredientWithAmount } from '@/models/Ingredient'
-import { useState } from 'react'
+import { Ingredient, IngredientWithAmount, Measurements } from '@/models'
+import { ChangeEvent, useState } from 'react'
 import Button from '@mui/material/Button'
 import { Autocomplete, Box, TextField } from '@mui/material'
 import RecipeCreateIngredient from './recipeCreateIngredient'
@@ -14,10 +13,10 @@ interface RecipeCreateFormProps {
 
 export default function RecipeCreateForm({ ingredientsProps, submit }: RecipeCreateFormProps) {
   const [name, setName] = useState('')
-  const [ingredients] = useState<Ingredient[]>(ingredientsProps)
+  const [ingredients] = useState(ingredientsProps)
   const [selectedIngredients, setSelectedIngredients] = useState<IngredientWithAmount[]>([])
   const [instructions, setInstructions] = useState('')
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState(false)
 
   const unselectedIngredients = ingredients.filter(
     (ingredient) => !selectedIngredients.some((selectedIngredient) => selectedIngredient.id === ingredient.id)
@@ -86,7 +85,7 @@ export default function RecipeCreateForm({ ingredientsProps, submit }: RecipeCre
           fullWidth
           required
           value={name}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setName(event.target.value)}
+          onChange={(event: ChangeEvent<HTMLInputElement>) => setName(event.target.value)}
         />
       </Box>
       <Box sx={{ width: '50%', mb: 2 }}>
@@ -121,13 +120,12 @@ export default function RecipeCreateForm({ ingredientsProps, submit }: RecipeCre
           multiline
           fullWidth
           value={instructions}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>) => setInstructions(event.target.value)}
+          onChange={(event: ChangeEvent<HTMLInputElement>) => setInstructions(event.target.value)}
         />
       </Box>
-      <Button variant="contained" type="submit">
+      <Button variant="contained" type="submit" loading={loading}>
         Erstellen
       </Button>
-      {loading && <p>Loading...</p>}
     </form>
   )
 }

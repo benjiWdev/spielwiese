@@ -1,5 +1,6 @@
-import { Measurements } from '@/models/enums/Measurements'
-import { IngredientWithAmount } from '@/models/Ingredient'
+'use client'
+
+import { IngredientWithAmount, Measurements } from '@/models'
 import { Select, MenuItem, IconButton, Stack, Typography, FormControl, InputLabel, OutlinedInput } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
 

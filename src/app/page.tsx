@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Fragment } from 'react'
-import { Routes } from '@/models/enums/Routes'
+import { Routes } from '@/models'
 import { Button } from '@mui/material'
 
 export default async function Dashboard() {

@@ -5,7 +5,7 @@ import { Client, neon } from '@neondatabase/serverless'
 
 const sql = neon(process.env.DATABASE_URL!)
 
-const getRecipes = async (): Promise<Recipe[]> => {
+export const getRecipes = async (): Promise<Recipe[]> => {
   try {
     const responseRecipes = (await sql`SELECT * FROM cooklet.recipes`) as RecipeResponse[]
     const responseRecipeIngredients =
@@ -29,7 +29,7 @@ const getRecipes = async (): Promise<Recipe[]> => {
   }
 }
 
-const createRecipe = async (recipeRequest: RecipeRequest): Promise<void> => {
+export const createRecipe = async (recipeRequest: RecipeRequest): Promise<void> => {
   const client = new Client(process.env.DATABASE_URL)
   await client.connect()
 
@@ -62,7 +62,7 @@ const createRecipe = async (recipeRequest: RecipeRequest): Promise<void> => {
   }
 }
 
-const getIngredients = async (): Promise<Ingredient[]> => {
+export const getIngredients = async (): Promise<Ingredient[]> => {
   try {
     const response = await sql`SELECT * FROM cooklet.ingredients`
     return response as Ingredient[]
@@ -71,7 +71,7 @@ const getIngredients = async (): Promise<Ingredient[]> => {
   }
 }
 
-const createIngredient = async (ingredientName: string): Promise<void> => {
+export const createIngredient = async (ingredientName: string): Promise<void> => {
   try {
     await sql`INSERT INTO cooklet.ingredients (name) VALUES (${ingredientName})`
   } catch (e) {
@@ -79,4 +79,10 @@ const createIngredient = async (ingredientName: string): Promise<void> => {
   }
 }
 
-export { getRecipes, createRecipe, getIngredients, createIngredient }
+export const deleteIngredient = async (ingredientId: string): Promise<void> => {
+  try {
+    await sql`DELETE FROM cooklet.ingredients WHERE ID = ${ingredientId}`
+  } catch (e) {
+    return Promise.reject(e)
+  }
+}

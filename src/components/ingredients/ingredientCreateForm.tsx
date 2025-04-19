@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, TextField, Button } from '@mui/material'
+import { Box, TextField, Button, Stack } from '@mui/material'
 import { useState } from 'react'
 
 interface IngredientCreateFormProps {
@@ -9,7 +9,7 @@ interface IngredientCreateFormProps {
 
 export default function IngredientCreateForm({ submit }: IngredientCreateFormProps) {
   const [name, setName] = useState('')
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState(false)
 
   const submitValues = async () => {
     try {
@@ -25,13 +25,14 @@ export default function IngredientCreateForm({ submit }: IngredientCreateFormPro
 
   return (
     <form action={submitValues}>
-      <Box sx={{ width: '50%', mb: 2 }}>
-        <TextField label="Name" required fullWidth value={name} onChange={(event) => setName(event.target.value)} />
-      </Box>
-      <Button variant="contained" type="submit">
-        Erstellen
-      </Button>
-      {loading && <p>Loading...</p>}
+      <Stack direction="row" alignItems="center" sx={{ mb: 4 }}>
+        <Box sx={{ width: '50%', mr: 2 }}>
+          <TextField label="Name" required fullWidth value={name} onChange={(event) => setName(event.target.value)} />
+        </Box>
+        <Button variant="contained" type="submit" size="large" loading={loading}>
+          Erstellen
+        </Button>
+      </Stack>
     </form>
   )
 }
