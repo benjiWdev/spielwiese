@@ -12,7 +12,7 @@ export default async function CreateRecipe() {
     Promise.reject(e)
   }
 
-  async function submitRecipe(name: string, ingredients: IngredientWithAmount[], instructions: string) {
+  async function submitRecipe(name: string, ingredients: IngredientWithAmount[], instructions: string[]) {
     'use server'
     try {
       await createRecipe({ name, ingredients, instructions })

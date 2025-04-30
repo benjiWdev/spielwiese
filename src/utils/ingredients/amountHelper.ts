@@ -13,7 +13,9 @@ export const getMeasurementDisplayValue = (measurement?: Measurements): string =
 }
 
 export const getAmountMeasurementString = (amount: Amount): string => {
-  if (amount.measurement === Measurements.ML || amount.measurement === Measurements.G) {
+  if (!amount.measurement) {
+    return ''
+  } else if (amount.measurement === Measurements.ML || amount.measurement === Measurements.G) {
     return `${amount.count}${getMeasurementDisplayValue(amount.measurement)}`
   } else {
     return `${amount.count} ${getMeasurementDisplayValue(amount.measurement)}`

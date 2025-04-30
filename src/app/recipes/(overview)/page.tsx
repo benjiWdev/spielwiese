@@ -42,11 +42,11 @@ export default async function RecipesOverview() {
                     </Fragment>
                   ))}
                 </Grid>
-                {recipe.instructions ? (
-                  <Typography variant="body1" sx={{ mt: 2 }}>
-                    {recipe.instructions}
+                {recipe.instructions.map((instruction, i) => (
+                  <Typography key={`${recipe.id}-inst-${i}`} variant="body1" sx={{ mt: 2 }}>
+                    {instruction}
                   </Typography>
-                ) : undefined}
+                ))}
               </CardContent>
             </Card>
           </Grid>
