@@ -148,7 +148,8 @@ export default function RecipeCreateForm({ ingredientsProps, submit }: RecipeCre
         type="button"
         size="small"
         onClick={(e) => {
-          e.preventDefault(), setInstructions([...instructions, ''])
+          e.preventDefault()
+          setInstructions([...instructions, ''])
         }}
       >
         <Typography variant="caption">Schritt hinzufügen +</Typography>
